@@ -2,7 +2,8 @@ package org.academiadecodigo.paint;
 
 import org.academiadecodigo.paint.grid.Cell;
 import org.academiadecodigo.paint.grid.Cursor;
-import org.academiadecodigo.paint.util.KeyboardController;
+import org.academiadecodigo.paint.util.FileManager;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 
 public class Paint {
     //Fields
@@ -15,11 +16,6 @@ public class Paint {
     public Paint(int width, int height){
         grid = new Grid(width, height);
         cursor = new Cursor();
-    }
-
-    //Getters
-    public boolean isPainting(){
-        return painting;
     }
 
     //Setters
@@ -61,7 +57,7 @@ public class Paint {
     }
 
     public void paint(){
-        Cell cell = grid.getCells(cursor.getRow(), cursor.getCol());
+        Cell cell = grid.getCell(cursor.getRow(), cursor.getCol());
         if(cell.isPainted()){
             cell.erase();
         } else{
@@ -72,6 +68,25 @@ public class Paint {
 
     public void clear(){
         grid.clearGrid();
+    }
+
+    public void changeColor(Color newColor){
+        Cell.changeColor(newColor);
+    }
+
+    public void save(){
+        String text = "";
+        for (int i = 0; i < grid.getCols(); i++) {
+            for (int j = 0; j < grid.getRows(); j++) {
+                text += grid.getCell(i, j).toString();
+            }
+            text += "\n";
+        }
+        FileManager.save(text);
+    }
+
+    public void load(){
+        System.out.println("LOAD");
     }
 
 

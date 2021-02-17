@@ -29,10 +29,9 @@ public class Grid {
         return cols;
     }
 
-    public Cell getCells(int row, int col){
+    public Cell getCell(int row, int col){
         return cells[row][col];
     }
-
 
     //Custom Methods
     public void initializeCells(){

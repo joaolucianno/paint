@@ -2,6 +2,7 @@ package org.academiadecodigo.paint.util;
 
 import org.academiadecodigo.paint.Paint;
 import org.academiadecodigo.paint.grid.Cursor;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -21,7 +22,7 @@ public class KeyboardController implements KeyboardHandler {
     }
 
     private void initKeyboard(){
-        KeyboardEvent[] events = new KeyboardEvent[9];
+        KeyboardEvent[] events = new KeyboardEvent[19];
         for (int i = 0; i < events.length; i++) {
             events[i] = new KeyboardEvent();
             if(i == 5){
@@ -40,6 +41,16 @@ public class KeyboardController implements KeyboardHandler {
         events[6].setKey(KeyboardEvent.KEY_C);
         events[7].setKey(KeyboardEvent.KEY_S);
         events[8].setKey(KeyboardEvent.KEY_L);
+        events[9].setKey(KeyboardEvent.KEY_1);
+        events[10].setKey(KeyboardEvent.KEY_2);
+        events[11].setKey(KeyboardEvent.KEY_3);
+        events[12].setKey(KeyboardEvent.KEY_4);
+        events[13].setKey(KeyboardEvent.KEY_5);
+        events[14].setKey(KeyboardEvent.KEY_6);
+        events[15].setKey(KeyboardEvent.KEY_7);
+        events[16].setKey(KeyboardEvent.KEY_8);
+        events[17].setKey(KeyboardEvent.KEY_9);
+        events[18].setKey(KeyboardEvent.KEY_0);
 
 
         for (int i = 0; i < events.length; i++) {
@@ -72,11 +83,47 @@ public class KeyboardController implements KeyboardHandler {
                 paint.clear();
                 break;
             case KeyboardEvent.KEY_S:
-                //paint.save();
+                paint.save();
                 break;
             case KeyboardEvent.KEY_L:
-                //paint.load();
+                paint.load();
                 break;
+
+            //Change Slots
+            case KeyboardEvent.KEY_1:
+                //paint.save();
+                break;
+            case KeyboardEvent.KEY_2:
+                //paint.save();
+                break;
+            case KeyboardEvent.KEY_3:
+                //paint.save();
+                break;
+            case KeyboardEvent.KEY_4:
+                //paint.save();
+                break;
+
+            //Change Color
+            case KeyboardEvent.KEY_5:
+                paint.changeColor(Color.RED);
+                break;
+            case KeyboardEvent.KEY_6:
+                paint.changeColor(Color.BLUE);
+                break;
+            case KeyboardEvent.KEY_7:
+                paint.changeColor(Color.GREEN);
+                break;
+            case KeyboardEvent.KEY_8:
+                paint.changeColor(Color.YELLOW);
+                break;
+            case KeyboardEvent.KEY_9:
+                paint.changeColor(Color.MAGENTA);
+                break;
+            case KeyboardEvent.KEY_0:
+                paint.changeColor(Color.GRAY);
+                break;
+
+
         }
     }
 

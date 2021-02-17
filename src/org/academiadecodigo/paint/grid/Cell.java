@@ -10,6 +10,7 @@ public class Cell {
     protected int col;
     protected Rectangle cell;
     private boolean painted;
+    private static Color color;
 
 
     //Constructor
@@ -17,6 +18,7 @@ public class Cell {
         this.row = row;
         this.col = col;
         painted = false;
+        color = Color.BLACK;
         cell = new Rectangle(col * Grid.CELL_SIZE + Grid.PADDING, row * Grid.CELL_SIZE + Grid.PADDING, Grid.CELL_SIZE, Grid.CELL_SIZE);
         cell.draw();
     }
@@ -41,7 +43,7 @@ public class Cell {
     //Custom Methods
     public void paint(){
         painted = true;
-        cell.setColor(Color.RED);
+        cell.setColor(color);
         cell.fill();
     }
 
@@ -49,6 +51,10 @@ public class Cell {
         painted = false;
         cell.setColor(Color.BLACK);
         cell.draw();
+    }
+
+    public static void changeColor(Color newColor){
+        color = newColor;
     }
 
     @Override
