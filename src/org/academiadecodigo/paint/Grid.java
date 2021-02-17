@@ -1,6 +1,8 @@
 package org.academiadecodigo.paint;
 
 import org.academiadecodigo.paint.grid.Cell;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class Grid {
     //Fields
@@ -19,11 +21,32 @@ public class Grid {
         initializeCells();
     }
 
+    public int getRows(){
+        return rows;
+    }
+
+    public int getCols() {
+        return cols;
+    }
+
+    public Cell getCells(int row, int col){
+        return cells[row][col];
+    }
+
+
     //Custom Methods
-    private void initializeCells(){
+    public void initializeCells(){
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 cells[i][j] = new Cell(i,j);
+            }
+        }
+    }
+
+    public void clearGrid(){
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                cells[i][j].erase();
             }
         }
     }
