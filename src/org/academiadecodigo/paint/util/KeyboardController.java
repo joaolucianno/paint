@@ -65,6 +65,7 @@ public class KeyboardController implements KeyboardHandler {
                 paint.moveCursor(Cursor.Direction.DOWN);
                 break;
             case KeyboardEvent.KEY_SPACE:
+                paint.setPainting(true);
                 paint.paint();
                 break;
             case KeyboardEvent.KEY_C:
@@ -81,6 +82,8 @@ public class KeyboardController implements KeyboardHandler {
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
-
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE){
+            paint.setPainting(false);
+        }
     }
 }

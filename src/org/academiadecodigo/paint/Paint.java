@@ -17,6 +17,16 @@ public class Paint {
         cursor = new Cursor();
     }
 
+    //Getters
+    public boolean isPainting(){
+        return painting;
+    }
+
+    //Setters
+    public void setPainting(boolean painting){
+        this.painting = painting;
+    }
+
     //Custom Methods
     public void moveCursor(Cursor.Direction direction){
         if(cursorOnEdge(direction)){
@@ -37,6 +47,10 @@ public class Paint {
                 cursor.moveDown();
                 break;
         }
+
+        if(painting){
+            paint();
+        }
     }
 
     public boolean cursorOnEdge(Cursor.Direction direction){
@@ -51,9 +65,9 @@ public class Paint {
         if(cell.isPainted()){
             cell.erase();
         } else{
+            painting = true;
             cell.paint();
         }
-
     }
 
     public void clear(){
