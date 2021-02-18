@@ -59,10 +59,12 @@ public class Paint {
     public void paint(){
         Cell cell = grid.getCell(cursor.getRow(), cursor.getCol());
         if(cell.isPainted()){
+            //painting = false;
             cell.erase();
         } else{
             painting = true;
             cell.paint();
+            System.out.println(cell.getCurrentColor());
         }
     }
 
@@ -86,7 +88,28 @@ public class Paint {
     }
 
     public void load(){
-        System.out.println("LOAD");
+        clear();
+        String load = FileManager.load();
+        int aux = 0;
+        for (int i = 0; i < grid.getRows(); i++) {
+            for (int j = 0; j < grid.getCols(); j++) {
+                Cell temp = grid.getCell(i, j);
+                if(load.charAt(i+j+aux) == '1'){
+                    temp.setPainted(true);
+                    temp.paint();
+                } else {
+                    temp.setPainted(false);
+                }
+                System.out.println(load.charAt(i+j+aux));
+            }
+            aux += grid.getRows();
+        }
+        painting = false;
+        //System.out.println(load);
+    }
+
+    public void changeSlot(String newLoadPath){
+        FileManager.setSaveLoadPath(newLoadPath);
     }
 
 
