@@ -92,7 +92,6 @@ public class Grid {
                 } else {
                     temp.setPainted(false);
                 }
-                //System.out.println(load.charAt(aux));
                 aux += 2;
             }
         }

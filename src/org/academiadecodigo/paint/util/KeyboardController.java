@@ -96,20 +96,16 @@ public class KeyboardController implements KeyboardHandler {
 
             //Change Save Slots
             case KeyboardEvent.KEY_1:
-                paint.changeSlot("resources/saveLoad1.txt");
-                //System.out.println("resources/saveLoad1.txt");
+                paint.changeSlot("save/saveLoad1.txt");
                 break;
             case KeyboardEvent.KEY_2:
-                paint.changeSlot("resources/saveLoad2.txt");
-                //System.out.println("resources/saveLoad2.txt");
+                paint.changeSlot("save/saveLoad2.txt");
                 break;
             case KeyboardEvent.KEY_3:
-                paint.changeSlot("resources/saveLoad3.txt");
-                //System.out.println("resources/saveLoad3.txt");
+                paint.changeSlot("save/saveLoad3.txt");
                 break;
             case KeyboardEvent.KEY_4:
-                paint.changeSlot("resources/saveLoad4.txt");
-                //System.out.println("resources/saveLoad4.txt");
+                paint.changeSlot("save/saveLoad4.txt");
                 break;
 
             //Change Color

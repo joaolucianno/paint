@@ -4,7 +4,7 @@ import java.io.*;
 
 public class FileManager {
     //Fields
-    private static String saveLoadPath = "resources/saveLoad1.txt";
+    private static String saveLoadPath = "save/saveLoad1.txt";
 
     //Setter
     public static void setSaveLoadPath(String newPath){
@@ -17,12 +17,19 @@ public class FileManager {
      * @param save
      */
     public static void save(String save){
+        System.out.println("Im here1");
         BufferedWriter bw = null;
+        File file = new File(saveLoadPath);
         try {
+            if(!file.exists()){
+                file.getParentFile().mkdirs();
+                file.createNewFile();
+            }
             bw = new BufferedWriter(new FileWriter(saveLoadPath));
             bw.write(save);
-            //System.out.println("SAVE");
-        } catch (IOException errorSave) {}
+        } catch (IOException errorSave) {
+            System.err.println("SAVE ERROR");
+        }
         finally {
             cleanUp(bw);
         }
@@ -45,7 +52,6 @@ public class FileManager {
         finally {
             cleanUp(br);
         }
-        //System.out.println(result);
         return result;
     }
 
