@@ -2,7 +2,6 @@ package org.academiadecodigo.paint.util;
 
 import org.academiadecodigo.paint.Paint;
 import org.academiadecodigo.paint.grid.Cursor;
-import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -21,6 +20,9 @@ public class KeyboardController implements KeyboardHandler {
         initKeyboard();
     }
 
+    /**
+     * Initialize Keyboard
+     */
     private void initKeyboard(){
         KeyboardEvent[] events = new KeyboardEvent[19];
         for (int i = 0; i < events.length; i++) {
@@ -59,7 +61,10 @@ public class KeyboardController implements KeyboardHandler {
 
     }
 
-
+    /**
+     *
+     * @param keyboardEvent
+     */
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch (keyboardEvent.getKey()){
@@ -92,39 +97,39 @@ public class KeyboardController implements KeyboardHandler {
             //Change Save Slots
             case KeyboardEvent.KEY_1:
                 paint.changeSlot("resources/saveLoad1.txt");
-                System.out.println("resources/saveLoad1.txt");
+                //System.out.println("resources/saveLoad1.txt");
                 break;
             case KeyboardEvent.KEY_2:
                 paint.changeSlot("resources/saveLoad2.txt");
-                System.out.println("resources/saveLoad2.txt");
+                //System.out.println("resources/saveLoad2.txt");
                 break;
             case KeyboardEvent.KEY_3:
                 paint.changeSlot("resources/saveLoad3.txt");
-                System.out.println("resources/saveLoad3.txt");
+                //System.out.println("resources/saveLoad3.txt");
                 break;
             case KeyboardEvent.KEY_4:
                 paint.changeSlot("resources/saveLoad4.txt");
-                System.out.println("resources/saveLoad4.txt");
+                //System.out.println("resources/saveLoad4.txt");
                 break;
 
             //Change Color
             case KeyboardEvent.KEY_5:
-                paint.changeColor(Color.RED);
+                paint.changeColor(255, 0, 0);
                 break;
             case KeyboardEvent.KEY_6:
-                paint.changeColor(Color.BLUE);
+                paint.changeColor(0, 0, 255);
                 break;
             case KeyboardEvent.KEY_7:
-                paint.changeColor(Color.GREEN);
+                paint.changeColor(0, 255, 0);
                 break;
             case KeyboardEvent.KEY_8:
-                paint.changeColor(Color.YELLOW);
+                paint.changeColor(255, 255, 0);
                 break;
             case KeyboardEvent.KEY_9:
-                paint.changeColor(Color.MAGENTA);
+                paint.changeColor(255, 0 ,255);
                 break;
             case KeyboardEvent.KEY_0:
-                paint.changeColor(Color.BLACK);
+                paint.changeColor(0, 0, 0);
                 break;
 
 

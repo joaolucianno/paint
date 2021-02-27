@@ -21,21 +21,34 @@ public class Cursor extends Cell{
     }
 
     //Custom Methods
+
+    /**
+     * Key Left
+     */
     public void moveLeft(){
         col--;
         cell.translate(-CELL_SIZE, 0);
     }
 
+    /**
+     * Key Right
+     */
     public void moveRight(){
         col++;
         cell.translate(CELL_SIZE, 0);
     }
 
+    /**
+     * Key Up
+     */
     public void moveUp(){
         row--;
         cell.translate(0, -CELL_SIZE);
     }
 
+    /**
+     * Key Down
+     */
     public void moveDown(){
         row++;
         cell.translate(0, CELL_SIZE);

@@ -2,31 +2,20 @@ package org.academiadecodigo.paint.util;
 
 import java.io.*;
 
-public class FileManager implements Closeable {
+public class FileManager {
     //Fields
     private static String saveLoadPath = "resources/saveLoad1.txt";
-    //private static String loadPath = "resources/saveLoad1.txt";
 
-    //Getters
-    public String getSavePath() {
-        return saveLoadPath;
-    }
-
-    public static String getLoadPath() {
-        return saveLoadPath;
-    }
-
-    //Setters
+    //Setter
     public static void setSaveLoadPath(String newPath){
         saveLoadPath = newPath;
     }
 
-//    public static void setLoadPath(String loadPath) {
-//        FileManager.saveLoadPath = loadPath;
-//    }
-
     //Custom Methods
-    //Save
+    /**
+     *
+     * @param save
+     */
     public static void save(String save){
         BufferedWriter bw = null;
         try {
@@ -39,7 +28,10 @@ public class FileManager implements Closeable {
         }
     }
 
-    //Load
+    /**
+     *
+     * @return file loaded
+     */
     public static String load(){
         BufferedReader br = null;
         String result = "";
@@ -53,11 +45,14 @@ public class FileManager implements Closeable {
         finally {
             cleanUp(br);
         }
-
+        //System.out.println(result);
         return result;
     }
 
-
+    /**
+     * Method safe close
+     * @param closeable
+     */
     private static void cleanUp(Closeable closeable) {
         try{
             if(closeable == null){
@@ -68,8 +63,4 @@ public class FileManager implements Closeable {
     }
 
 
-    @Override
-    public void close() throws IOException {
-
-    }
 }

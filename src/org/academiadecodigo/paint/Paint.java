@@ -3,7 +3,6 @@ package org.academiadecodigo.paint;
 import org.academiadecodigo.paint.grid.Cell;
 import org.academiadecodigo.paint.grid.Cursor;
 import org.academiadecodigo.paint.util.FileManager;
-import org.academiadecodigo.simplegraphics.graphics.Color;
 
 public class Paint {
     //Fields
@@ -18,12 +17,22 @@ public class Paint {
         cursor = new Cursor();
     }
 
-    //Setters
+    //Setter
+
+    /**
+     * Set status of the cell
+     * @param painting
+     */
     public void setPainting(boolean painting){
         this.painting = painting;
     }
 
     //Custom Methods
+
+    /**
+     *
+     * @param direction
+     */
     public void moveCursor(Cursor.Direction direction){
         if(cursorOnEdge(direction)){
             return;
@@ -49,6 +58,11 @@ public class Paint {
         }
     }
 
+    /**
+     *
+     * @param direction
+     * @return
+     */
     public boolean cursorOnEdge(Cursor.Direction direction){
         return cursor.getCol() == 0 &&  direction == Cursor.Direction.LEFT ||
                 cursor.getCol() == grid.getCols() -1 && direction == Cursor.Direction.RIGHT ||
@@ -56,58 +70,61 @@ public class Paint {
                 cursor.getRow() == grid.getRows() -1 && direction == Cursor.Direction.DOWN;
     }
 
+    /**
+     * Paint cell specified by cursor position
+     */
     public void paint(){
         Cell cell = grid.getCell(cursor.getRow(), cursor.getCol());
         if(cell.isPainted()){
-            //painting = false;
             cell.erase();
         } else{
             painting = true;
             cell.paint();
-            System.out.println(cell.getCurrentColor());
         }
     }
 
+    /**
+     * Clear Grid
+     */
     public void clear(){
         grid.clearGrid();
     }
 
-    public void changeColor(Color newColor){
-        Cell.changeColor(newColor);
+    /**
+     * Change static property currentColor in Cell Class
+     * @param r
+     * @param g
+     * @param b
+     */
+    public void changeColor(int r, int g, int b){
+        Cell.changeColor(r, g, b);
     }
 
+    /**
+     * Save
+     */
     public void save(){
         String text = "";
         for (int i = 0; i < grid.getCols(); i++) {
             for (int j = 0; j < grid.getRows(); j++) {
-                text += grid.getCell(i, j).toString();
+                text += grid.getCell(i, j).toString() ;
             }
             text += "\n";
         }
         FileManager.save(text);
     }
 
+    /**
+     * Load
+     */
     public void load(){
-        clear();
-        String load = FileManager.load();
-        int aux = 0;
-        for (int i = 0; i < grid.getRows(); i++) {
-            for (int j = 0; j < grid.getCols(); j++) {
-                Cell temp = grid.getCell(i, j);
-                if(load.charAt(i+j+aux) == '1'){
-                    temp.setPainted(true);
-                    temp.paint();
-                } else {
-                    temp.setPainted(false);
-                }
-                System.out.println(load.charAt(i+j+aux));
-            }
-            aux += grid.getRows();
-        }
-        painting = false;
-        //System.out.println(load);
+        grid.loadGrid(FileManager.load());
     }
 
+    /**
+     * Change slot to save and load
+     * @param newLoadPath
+     */
     public void changeSlot(String newLoadPath){
         FileManager.setSaveLoadPath(newLoadPath);
     }
